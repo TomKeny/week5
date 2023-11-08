@@ -152,7 +152,7 @@ let input
 let exit = false
 
 let name = prompt("Name Your Tamogotchi ")
-let speed = prompt("How fast can your tamagotchi fly! ")
+let speed = prompt("How fast can your tamagotchi fly (m/s)! ")
 
 const obj = new bird(name,Number(speed))
 
