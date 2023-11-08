@@ -169,8 +169,32 @@ class fish extends tamagotchi {
         this.hunger += 20
         this.xp += 6
         console.log(`${this.name} swam ${this.swimSpeed * 30}m, and they had a great time doing it!`)
-        console.log(`${this.name} improved at swimming! \n swimSpeed: ${this.swimSpeed} + 1 \n +6xp`)
+        console.log(`${this.name} improved at swimming! \n swimSpeed: ${this.swimSpeed}m/s + 1m/s \n +6xp`)
         this.swimSpeed += 1
+    }
+}
+
+class mammal extends tamagotchi {
+    constructor (name, runSpeed) {
+        super (name)
+        this.runSpeed = runSpeed
+        this.species = "mammal"
+    }
+    GetStats() {
+        return console.table({
+            name: this.name,
+            health: this.health + "%",
+            hunger: this.hunger + "%", 
+            runSpeed: this.runSpeed + "m/s"
+        })
+    }
+    Run () {
+        this.health += 10
+        this.hunger += 20
+        this.xp += 6
+        console.log(`${this.name} Ran ${this.runSpeed * 30}m, and they had a great time doing it!`)
+        console.log(`${this.name} improved at running! \n runSpeed: ${this.runSpeed}m/s + 1m/s \n +6xp`)
+        this.runSpeed += 1
     }
 }
 
@@ -180,8 +204,8 @@ let input,species,name,speed,obj
 let exit = false
 
 name = prompt("Name Your Tamogotchi ")
-while (species != "fish" && species != "bird") {
-    species = prompt(`Is ${name} a bird or a fish `)
+while (species != "fish" && species != "bird" && species != "mammal") {
+    species = prompt(`Is ${name} a bird, a fish or a mammal `)
     if (species == "bird") {
         speed = prompt(`How fast can ${name} fly (m/s)! `)
         obj = new bird(name,Number(speed))
@@ -190,9 +214,14 @@ while (species != "fish" && species != "bird") {
         speed = prompt(`How fast can ${name} swim (m/s)! `)
         obj = new fish(name,Number(speed))
     }
+    else if (species == "mammal") {
+        speed = prompt(`How fast can ${name} run (m/s)! `)
+        obj = new mammal(name,Number(speed))
+    }
     else {
         console.log("please select one of the options (case sensitive)")
     }
+    
 }
 
 while (exit == false) {
@@ -201,6 +230,9 @@ while (exit == false) {
     }
     else if (obj.species == "fish") {
         console.log(`Pleases select an option \n  Stats - Check up on ${obj.name} \n  Level - see ${obj.name}'s level and progress \n  Feed - give ${obj.name} food \n  Play - play with ${obj.name} \n  Swim - let ${obj.name} Swim around \n  Exit - exit the application \n `)
+    }
+    else if (obj.species == "mammal") {
+        console.log(`Pleases select an option \n  Stats - Check up on ${obj.name} \n  Level - see ${obj.name}'s level and progress \n  Feed - give ${obj.name} food \n  Play - play with ${obj.name} \n  Run - let ${obj.name} run about \n  Exit - exit the application \n `)
     }
     input = prompt("Option: ")
     console.log("\n")
@@ -217,12 +249,15 @@ while (exit == false) {
         case "Play":
             obj.Play()
             break;
-        case "Fly","Swim":
+        case "Fly","Swim","Run":
             if (obj.species == "bird") {
                 obj.Fly()
             }
             else if (obj.species == "fish") {
                 obj.Swim()
+            }
+            else if (obj.species == "mammal") {
+                obj.Run()
             }
             break;
         case "Exit":
