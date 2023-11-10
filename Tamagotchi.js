@@ -61,9 +61,13 @@
 //     }
 // }
 
+// const pepito = new Animal("Pepito", 100, 0)
+
+// pepito.Eats()
+
 // class Dog extends Animal {
 //     constructor (name, health, hunger, happy) {
-//         super (name, health, hunger, happy)
+//         super (name, health, hunger)
 //         this.happy = happy
 //     }
 //     playBall() {
@@ -79,7 +83,6 @@
 //     }
 // }
 
-// const pepito = new Animal("Pepito", 100, 0)
 // const pepita = new Dog("Pepita", 100, 0, "happy")
 
 // pepita.walks()

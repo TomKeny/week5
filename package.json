@@ -1,5 +1,7 @@
 {
+  "type": "module",
   "dependencies": {
+    "inquirer": "^9.2.12",
     "prompt-sync": "^4.2.0"
   }
 }
