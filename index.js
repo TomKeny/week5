@@ -5,7 +5,6 @@ let playerAns,botAns,exitAsk
 let playerScore = 0
 let botScore = 0
 let exit = false
-let arr
 
 async function start () {
     name = await textInput("What is your name? ")
